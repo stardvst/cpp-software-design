@@ -3,6 +3,8 @@
 #include "drawCircle.h"
 #include "square.h"
 #include "drawSquare.h"
+#include "triangle.h"
+#include "drawTriangle.h"
 
 void drawAllShapes(const std::vector<std::unique_ptr<Shape>> &shapes)
 {
@@ -16,6 +18,11 @@ void drawAllShapes(const std::vector<std::unique_ptr<Shape>> &shapes)
 
     case ShapeType::square:
       draw(static_cast<const Square &>(*shape));
+      break;
+
+    case ShapeType::triangle:
+      draw(static_cast<const Triangle &>(*shape));
+      break;
 
     default:
       break;

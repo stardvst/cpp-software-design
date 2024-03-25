@@ -3,7 +3,8 @@
 enum class ShapeType
 {
   circle,
-  square
+  square,
+  triangle
 };
 
 class Shape
