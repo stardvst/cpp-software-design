@@ -7,4 +7,5 @@ public:
   virtual ~Shape() = default;
 
   virtual void draw() const = 0;
+  virtual void serialize() const = 0;
 };

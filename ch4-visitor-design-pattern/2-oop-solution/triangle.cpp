@@ -6,3 +6,8 @@ void Triangle::draw() const
 {
   std::cout << "drawing triangle... p1=(" << p1().x << ", " << p1().y << "), p2=(" << p2().x << ", " << p2().y << "), p3=(" << p3().x << ", " << p3().y << ")\n";
 }
+
+void Triangle::serialize() const
+{
+  std::cout << "serializing triangle...\n";
+}

@@ -14,6 +14,7 @@ public:
   Point center() const { return m_center; }
 
   void draw() const override;
+  void serialize() const override;
 
 private:
   double m_radius{};

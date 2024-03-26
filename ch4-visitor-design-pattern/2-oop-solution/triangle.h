@@ -17,6 +17,7 @@ public:
   Point p3() const { return m_p3; }
 
   void draw() const override;
+  void serialize() const override;
 
 private:
   Point m_p1{}, m_p2{}, m_p3{};
