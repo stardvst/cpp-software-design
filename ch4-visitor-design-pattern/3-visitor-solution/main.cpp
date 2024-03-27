@@ -1,6 +1,7 @@
 #include <memory>
 #include <vector>
 #include "drawAllShapes.h"
+#include "translateAllShapes.h"
 #include "circle.h"
 #include "square.h"
 #include "shape.h"
@@ -15,6 +16,7 @@ int main()
   shapes.emplace_back(std::make_unique<Circle>(4.1));
 
   drawAllShapes(shapes);
+  translateAllShapes(shapes);
 
   return 0;
 }
