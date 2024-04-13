@@ -14,6 +14,7 @@ int main()
   shapes.emplace_back(std::make_unique<Circle>(2.3, std::make_unique<OpenGLDrawStrategy>()));
   shapes.emplace_back(std::make_unique<Square>(1.2, std::make_unique<OpenGLDrawStrategy>()));
   shapes.emplace_back(std::make_unique<Circle>(4.1, std::make_unique<OpenGLDrawStrategy>()));
+  shapes.emplace_back(std::make_unique<Triangle>(Point{3, 5}, Point{5, 2}, Point{5, 10}, std::make_unique<OpenGLDrawStrategy>()));
 
   for (const auto &shape : shapes)
     shape->draw();
