@@ -5,11 +5,11 @@
 #include "point.h"
 #include "shape.h"
 
-template <typename DrawCircleStrategy>
+template <typename DrawSquareStrategy>
 class Square : public Shape
 {
 public:
-  explicit Square(double side, DrawCircleStrategy drawer)
+  explicit Square(double side, DrawSquareStrategy drawer)
     : m_side(side)
     , m_drawer(std::move(drawer))
   {
@@ -26,5 +26,5 @@ public:
 private:
   double m_side{};
   Point m_center{};
-  DrawCircleStrategy m_drawer{};
+  DrawSquareStrategy m_drawer{};
 };
