@@ -11,9 +11,9 @@ template <typename T>
 class DynamicVector : public DenseVector<DynamicVector<T>>
 {
 public:
-  // using value_type = T;
-  // using iterator = typename std::vector<T>::iterator;
-  // using const_iterator = typename std::vector<T>::const_iterator;
+  using value_type = T;
+  using iterator = typename std::vector<T>::iterator;
+  using const_iterator = typename std::vector<T>::const_iterator;
 
   DynamicVector() = default;
   DynamicVector(std::initializer_list<T> init)
@@ -34,20 +34,3 @@ public:
 private:
   std::vector<T> m_values;
 };
-
-template <typename T>
-std::ostream &operator<<(std::ostream &os, const DynamicVector<T> &vector)
-{
-  os << '(';
-  for (const auto &element : vector)
-    os << ' ' << element;
-  os << " )";
-  return os;
-}
-
-template <typename T>
-auto l2norm(const DynamicVector<T> &vector)
-{
-  using std::begin, std::end;
-  return std::sqrt(std::inner_product(begin(vector), end(vector), begin(vector), T{}));
-}

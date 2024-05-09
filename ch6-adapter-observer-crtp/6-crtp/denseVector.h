@@ -1,3 +1,5 @@
+#pragma once
+
 template <typename ActualVector>
 class DenseVector
 {
@@ -23,3 +25,25 @@ public:
 protected:
   ~DenseVector() = default;
 };
+
+template <typename ActualVector>
+std::ostream &operator<<(std::ostream &os, const DenseVector<ActualVector> &vector)
+{
+  const size_t size(vector.size());
+
+  os << "(";
+  for (size_t i = 0UL; i < size; ++i)
+  {
+    os << " " << vector[i];
+  }
+  os << " )";
+
+  return os;
+}
+
+template <typename ActualVector>
+decltype(auto) l2norm(const DenseVector<ActualVector> &vector)
+{
+  using T = typename ActualVector::value_type;
+  return std::sqrt(std::inner_product(std::begin(vector), std::end(vector), std::begin(vector), T{}));
+}

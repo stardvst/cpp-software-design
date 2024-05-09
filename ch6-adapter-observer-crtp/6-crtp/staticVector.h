@@ -5,14 +5,15 @@
 #include <iterator>
 #include <array>
 #include <initializer_list>
+#include "denseVector.h"
 
 template <typename T, std::size_t Size>
-class StaticVector
+class StaticVector : public DenseVector<StaticVector<T, Size>>
 {
 public:
-  // using value_type = T;
-  // using iterator = typename std::array<T, Size>::iterator;
-  // using const_iterator = typename std::array<T, Size>::const_iterator;
+  using value_type = T;
+  using iterator = typename std::array<T, Size>::iterator;
+  using const_iterator = typename std::array<T, Size>::const_iterator;
 
   StaticVector() = default;
   StaticVector(std::initializer_list<T> init)
@@ -33,20 +34,3 @@ public:
 private:
   std::array<T, Size> m_values;
 };
-
-template <typename T, std::size_t Size>
-std::ostream &operator<<(std::ostream &os, const StaticVector<T, Size> &vector)
-{
-  os << '(';
-  for (const auto &element : vector)
-    os << ' ' << element;
-  os << " )";
-  return os;
-}
-
-template <typename T, std::size_t Size>
-auto l2norm(const StaticVector<T, Size> &vector)
-{
-  using std::begin, std::end;
-  return std::sqrt(std::inner_product(begin(vector), end(vector), begin(vector), T{}));
-}
