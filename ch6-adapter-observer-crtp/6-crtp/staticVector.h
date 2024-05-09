@@ -4,14 +4,15 @@
 #include <iosfwd>
 #include <iterator>
 #include <array>
+#include <initializer_list>
 
 template <typename T, std::size_t Size>
 class StaticVector
 {
 public:
-  using value_type = T;
-  using iterator = typename std::array<T, Size>::iterator;
-  using const_iterator = typename std::array<T, Size>::const_iterator;
+  // using value_type = T;
+  // using iterator = typename std::array<T, Size>::iterator;
+  // using const_iterator = typename std::array<T, Size>::const_iterator;
 
   StaticVector() = default;
   StaticVector(std::initializer_list<T> init)
