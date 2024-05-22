@@ -12,8 +12,6 @@ class DynamicVector : public DenseVector<DynamicVector<T>>
 {
 public:
   using value_type = T;
-  using iterator = typename std::vector<T>::iterator;
-  using const_iterator = typename std::vector<T>::const_iterator;
 
   DynamicVector() = default;
   DynamicVector(std::initializer_list<T> init)

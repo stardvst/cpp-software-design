@@ -12,8 +12,6 @@ class StaticVector : public DenseVector<StaticVector<T, Size>>
 {
 public:
   using value_type = T;
-  using iterator = typename std::array<T, Size>::iterator;
-  using const_iterator = typename std::array<T, Size>::const_iterator;
 
   StaticVector() = default;
   StaticVector(std::initializer_list<T> init)
