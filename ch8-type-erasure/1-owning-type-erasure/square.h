@@ -10,3 +10,8 @@ public:
 private:
   double m_side{};
 };
+
+inline bool operator==(const Square &lhs, const Square &rhs)
+{
+  return lhs.side() == rhs.side();
+}

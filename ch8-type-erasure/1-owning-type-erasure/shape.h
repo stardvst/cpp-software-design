@@ -11,6 +11,7 @@ class ShapeConcept
 public:
   virtual ~ShapeConcept() = default;
   virtual void draw() const = 0;
+  virtual bool isEqual(const ShapeConcept *sc) const = 0;
   virtual std::unique_ptr<ShapeConcept> clone() const = 0;
 };
 
@@ -24,6 +25,13 @@ public:
   {}
 
   void draw() const override { m_drawer(m_shape); }
+
+  bool isEqual(const ShapeConcept *sc) const override
+  {
+    using Model = OwningShapeModel<ShapeT, DrawStrategy>;
+    const auto *model = dynamic_cast<const Model *>(sc);
+    return (model && m_shape == model->m_shape);
+  }
 
   std::unique_ptr<ShapeConcept> clone() const override
   {
@@ -67,6 +75,16 @@ private:
   friend void draw(const Shape &shape)
   {
     shape.m_pimpl->draw();
+  }
+
+  friend bool operator==(const Shape &lhs, const Shape &rhs)
+  {
+    return lhs.m_pimpl->isEqual(rhs.m_pimpl.get());
+  }
+
+  friend bool operator!=(const Shape &lhs, const Shape &rhs)
+  {
+    return !(lhs == rhs);
   }
 
   std::unique_ptr<detail::ShapeConcept> m_pimpl{};

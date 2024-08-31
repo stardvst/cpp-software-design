@@ -10,3 +10,8 @@ public:
 private:
   double m_radius{};
 };
+
+inline bool operator==(const Circle &lhs, const Circle &rhs)
+{
+  return lhs.radius() == rhs.radius();
+}
